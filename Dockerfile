@@ -30,4 +30,9 @@ ENV npm_config_arch=arm64
 RUN curl -sL 'https://unofficial-builds.nodejs.org/download/release/v18.16.1/node-v18.16.1-linux-x64-glibc-217.tar.xz' | xzcat | tar -vx  --strip-components=1 -C /usr/local/
 RUN npm install --global yarn
 
+# install new enough git to work with repository
+RUN add-apt-repository ppa:git-core/ppa -y
+RUN apt update && apt install -y git
+RUN git --version
+
 ENTRYPOINT ["/entrypoint.sh"]

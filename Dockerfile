@@ -2,6 +2,8 @@ FROM ubuntu:20.04
 
 COPY entrypoint.sh /entrypoint.sh
 
+ARG DEBIAN_FRONTEND=noninteractive
+
 # baseline dependencies for all versions
 RUN apt update && apt install -y software-properties-common lsb-release \
     sudo wget curl build-essential jq autoconf automake \
